@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Oriental Artifacts</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #b89a6a;
+    --gold-light: #d4b98a;
+    --gold-dark: #8a7050;
+    --cream: #f7f2eb;
+    --cream-dark: #ede5d8;
+    --ink: #1a1612;
+    --ink-mid: #3d3428;
+    --ink-soft: #7a6f62;
+    --white: #ffffff;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Jost', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--ink);
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(247,242,235,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(184,154,106,0.2);
+    transition: background 0.3s;
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+    text-decoration: none;
+    transition: color 0.2s;
+    font-weight: 400;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 0.5rem 1.4rem;
+    text-decoration: none;
+    transition: all 0.25s;
+    font-weight: 400;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--white); }
+
+  /* PAGE HEADER */
+  .page-header {
+    padding: 8rem 4rem 3rem;
+    max-width: 860px;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(184,154,106,0.2);
+  }
+
+  .breadcrumb {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 1rem;
+  }
+  .breadcrumb a { color: var(--gold); text-decoration: none; }
+  .breadcrumb span { margin: 0 0.5rem; }
+
+  .page-title {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.05;
+  }
+  .page-title em { font-style: italic; color: var(--gold-dark); }
+  .page-line { width: 48px; height: 1px; background: var(--gold); margin-top: 1rem; }
+  .last-updated {
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    letter-spacing: 0.06em;
+    margin-top: 1rem;
+  }
+
+  /* CONTENT */
+  .content {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 4rem 4rem 7rem;
+  }
+
+  .highlight-box {
+    background: var(--cream-dark);
+    border-left: 3px solid var(--gold);
+    padding: 1.2rem 1.6rem;
+    margin-bottom: 3rem;
+    font-size: 0.92rem;
+    color: var(--ink-mid);
+    line-height: 1.85;
+  }
+
+  .section { margin-bottom: 3rem; }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(184,154,106,0.2);
+  }
+
+  .content p {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    line-height: 1.9;
+    margin-bottom: 1rem;
+  }
+  .content p:last-child { margin-bottom: 0; }
+
+  .inline-link {
+    color: var(--gold-dark);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(138,112,80,0.3);
+    transition: border-color 0.2s;
+  }
+  .inline-link:hover { border-color: var(--gold); }
+
+  /* FOOTER */
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 4rem; }
+
+  footer { background: var(--ink); color: var(--cream); padding: 4rem 0 2rem; }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(184,154,106,0.15);
+    margin-bottom: 2rem;
+  }
+
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--cream);
+    letter-spacing: 0.03em;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .footer-logo span { color: var(--gold); }
+
+  .footer-tagline { font-size: 0.88rem; color: rgba(237,229,216,0.5); line-height: 1.75; max-width: 260px; }
+
+  .footer-col-title {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1.2rem;
+    font-weight: 400;
+  }
+
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 0.6rem; }
+  .footer-links a { font-size: 0.88rem; color: rgba(237,229,216,0.5); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold-light); }
+
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+  .footer-copy { font-size: 0.78rem; color: rgba(237,229,216,0.3); }
+  .footer-socials { display: flex; gap: 1rem; }
+  .social-link {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(184,154,106,0.3);
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+    color: rgba(237,229,216,0.5);
+    font-size: 0.75rem;
+    transition: all 0.2s;
+  }
+  .social-link:hover { border-color: var(--gold); color: var(--gold); }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 2rem; }
+    .nav-links { display: none; }
+    .page-header { padding: 6rem 2rem 2rem; }
+    .content { padding: 3rem 2rem 5rem; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .container { padding: 0 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html" style="display:flex; align-items:center; gap:10px;">
+    <img src="Pictures/Oriental_Logo.png" alt="Oriental Artifacts Logo" style="height:50px; width:100px; object-fit:cover;">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#products">Products</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#range">Our Range</a></li>
+    <li><a href="index.html#faq">FAQs</a></li>
+    <li><a href="index.html#reviews">Reviews</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="index.html#contact">Get in Touch</a>
+</nav>
+
+<div class="page-header">
+  <p class="breadcrumb"><a href="index.html">Home</a><span>›</span> Privacy Policy</p>
+  <h1 class="page-title">Privacy <em>Policy</em></h1>
+  <div class="page-line"></div>
+  <p class="last-updated">Last updated: June 2026</p>
+</div>
+
+<div class="content">
+
+  <div class="highlight-box">
+    We respect your privacy. This page explains what personal information we collect through our website, how we use it, and how we keep it safe. We do not sell products online — this website exists so you can explore our collection and get in touch with us directly.
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Who We Are</h2>
+    <p>Oriental Artifacts is a curated collection of handcrafted goods based in Chiang Mai, Thailand. We source authentic artifacts, textiles, and decorative pieces from skilled artisans across Southeast Asia and beyond.</p>
+    <p>If you have any questions about this policy, please reach out via our <a class="inline-link" href="index.html#contact">contact form</a>.</p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">What Information We Collect</h2>
+    <p>We only collect personal information that you choose to provide through our contact form. This may include your name, email address, phone number, and the message you send us.</p>
+    <p>We do not collect any payment information, as we do not process sales through this website.</p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">How We Use Your Information</h2>
+    <p>The information you submit via our contact form is used solely to respond to your inquiry. We may follow up by email or phone to discuss your interest in our products.</p>
+    <p>We will never use your contact details to send unsolicited marketing messages, and we will never share or sell your personal information to third parties.</p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">How We Store Your Information</h2>
+    <p>Your inquiry details are handled securely and accessed only by our team. We retain your contact information only for as long as necessary to handle your inquiry and any follow-up communication.</p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Cookies &amp; Analytics</h2>
+    <p>Our website does not currently use tracking cookies or third-party analytics tools. If this changes in the future, this policy will be updated accordingly.</p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Your Rights</h2>
+    <p>You have the right to ask what personal information we hold about you, to request that we correct or delete it, or to ask us to stop using it. To make any such request, please contact us through our <a class="inline-link" href="index.html#contact">contact page</a>.</p>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time. Any changes will be reflected on this page with a revised date at the top.</p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <span class="footer-logo"><span>Oriental</span> Artifacts</span>
+        <p class="footer-tagline">A curated collection of handcrafted artifacts where tradition meets artistry. Serving international customers for over 30 years.</p>
+      </div>
+      <div>
+        <p class="footer-col-title">Navigate</p>
+        <ul class="footer-links">
+          <li><a href="index.html#products">Products</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#range">Our Range</a></li>
+          <li><a href="index.html#faq">FAQs</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Policies</p>
+        <ul class="footer-links">
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Follow Us</p>
+        <ul class="footer-links">
+          <li><a href="https://www.instagram.com/cmorientalartifacts/">Instagram</a></li>
+          <li><a href="https://www.facebook.com/chiangmaisouvenir">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Oriental Artifacts. All rights reserved.</p>
+      <div class="footer-socials">
+        <a class="social-link" href="https://www.instagram.com/cmorientalartifacts/" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a class="social-link" href="https://www.facebook.com/chiangmaisouvenir" aria-label="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.boxShadow = window.scrollY > 30 ? '0 2px 20px rgba(26,22,18,0.08)' : 'none';
+});
+</script>
+</body>
+</html>

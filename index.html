@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oriental Artifacts</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #b89a6a;
+    --gold-light: #d4b98a;
+    --gold-dark: #8a7050;
+    --cream: #f7f2eb;
+    --cream-dark: #ede5d8;
+    --ink: #1a1612;
+    --ink-mid: #3d3428;
+    --ink-soft: #7a6f62;
+    --white: #ffffff;
+    --section-gap: 7rem;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Jost', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--ink);
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(247,242,235,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(184,154,106,0.2);
+    transition: background 0.3s;
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+    text-decoration: none;
+    transition: color 0.2s;
+    font-weight: 400;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 0.5rem 1.4rem;
+    text-decoration: none;
+    transition: all 0.25s;
+    font-weight: 400;
+  }
+  .nav-cta:hover { background: var(--gold); color: var(--white); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 4rem 5rem 6rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(3.5rem, 6vw, 6rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 1.8rem;
+    letter-spacing: -0.01em;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-dark);
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    color: var(--ink-soft);
+    max-width: 420px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  .hero-actions { display: flex; gap: 1.2rem; align-items: center; }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--white);
+    padding: 0.85rem 2.4rem;
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 400;
+    transition: background 0.25s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-dark); transform: translateY(-1px); }
+
+  .btn-ghost {
+    color: var(--ink-mid);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 400;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--gold); border-color: var(--gold); }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-img-main {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(247,242,235,0.45) 0%, transparent 60%);
+  }
+
+  .hero-thumbnails {
+    position: absolute;
+    bottom: 3rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .hero-thumb {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border: 2px solid var(--white);
+    opacity: 0.75;
+    transition: opacity 0.2s, transform 0.2s;
+    cursor: pointer;
+  }
+  .hero-thumb:hover { opacity: 1; transform: scale(1.05); }
+
+  .hero-badge {
+    position: absolute;
+    top: calc(3rem + 75px);
+    right: 2.5rem;
+    background: var(--cream);
+    border: 1px solid var(--gold-light);
+    padding: 1rem 1.2rem;
+    text-align: center;
+  }
+  .hero-badge-num {
+    font-family: var(--serif);
+    font-size: 2rem;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+  }
+  .hero-badge-txt {
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: block;
+    margin-top: 0.3rem;
+  }
+
+  /* ─── STRIP ─── */
+  .strip {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 1rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .strip-inner {
+    display: inline-flex;
+    gap: 3rem;
+    animation: scroll-x 22s linear infinite;
+  }
+  .strip-item {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    flex-shrink: 0;
+  }
+  .strip-sep { color: rgba(255,255,255,0.2); }
+  @keyframes scroll-x {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ─── SECTION LAYOUT ─── */
+  section { padding: var(--section-gap) 0; }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 4rem;
+  }
+
+  .section-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+    font-weight: 400;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .section-line {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+
+  /* ─── PRODUCTS ─── */
+  .products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3.5rem;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .product-card {
+    cursor: pointer;
+    position: relative;
+  }
+
+  .product-img-wrap {
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    background: var(--cream-dark);
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+  .product-img-wrap svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .product-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(26,22,18,0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .product-card:hover .product-overlay { opacity: 1; }
+
+  .product-qv {
+    background: var(--white);
+    color: var(--ink);
+    padding: 0.6rem 1.4rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 400;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .product-qv:hover { background: var(--gold); color: var(--white); }
+
+  .product-card:hover .product-img-wrap img,
+  .product-card:hover .product-img-wrap .product-art {
+    transform: scale(1.04);
+  }
+
+  .product-art {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-name {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .product-price {
+    font-size: 0.85rem;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    font-weight: 400;
+  }
+
+  /* ─── ABOUT ─── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .about-images {
+    position: relative;
+    height: 560px;
+  }
+
+  .about-img-main {
+    position: absolute;
+    top: 0; left: 0;
+    width: 70%;
+    height: 85%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .about-img-secondary {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 52%;
+    height: 50%;
+    object-fit: cover;
+    display: block;
+    border: 5px solid var(--cream);
+  }
+
+  .about-years {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--gold);
+    color: var(--white);
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 3;
+  }
+  .about-years-num {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    font-weight: 300;
+    line-height: 1;
+  }
+  .about-years-txt {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    line-height: 1.3;
+    margin-top: 0.3rem;
+  }
+
+  .about-text p {
+    color: var(--ink-soft);
+    font-size: 1rem;
+    line-height: 1.9;
+    margin-bottom: 1.4rem;
+  }
+
+  /* ─── RANGE ─── */
+  .range-section { background: var(--ink); color: var(--cream); }
+  .range-section .section-title { color: var(--cream); }
+  .range-section .section-eyebrow { color: var(--gold-light); }
+
+  .range-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3.5rem;
+  }
+
+  .range-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .range-card {
+    border: 1px solid rgba(184,154,106,0.25);
+    padding: 2rem 1.8rem;
+    transition: border-color 0.3s, background 0.3s;
+    cursor: default;
+  }
+  .range-card:hover {
+    border-color: var(--gold);
+    background: rgba(184,154,106,0.06);
+  }
+
+  .range-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 1.5rem;
+    color: var(--gold-light);
+  }
+
+  .range-name {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 0.8rem;
+    letter-spacing: -0.01em;
+  }
+
+  .range-desc {
+    font-size: 0.88rem;
+    color: rgba(237,229,216,0.55);
+    line-height: 1.75;
+  }
+
+  /* ─── FAQ ─── */
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid rgba(184,154,106,0.25);
+  }
+
+  .faq-item {
+    padding: 2.5rem;
+    border-bottom: 1px solid rgba(184,154,106,0.25);
+    border-right: 1px solid rgba(184,154,106,0.25);
+    transition: background 0.25s;
+    cursor: default;
+  }
+  .faq-item:hover { background: var(--cream-dark); }
+  .faq-item:nth-child(2n) { border-right: none; }
+  .faq-item:nth-last-child(-n+2) { border-bottom: none; }
+
+  .faq-q {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+  }
+  .faq-a {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    line-height: 1.75;
+  }
+
+  /* ─── CONTACT ─── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+  .form-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 400;
+  }
+
+  .form-input, .form-textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(184,154,106,0.4);
+    padding: 0.7rem 0;
+    font-size: 0.95rem;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .form-input:focus, .form-textarea:focus {
+    border-color: var(--gold);
+  }
+  .form-input::placeholder, .form-textarea::placeholder {
+    color: rgba(122,111,98,0.4);
+  }
+  .form-textarea { resize: none; height: 100px; }
+
+  .form-btn {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 1rem 2.8rem;
+    border: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-family: var(--sans);
+    font-weight: 400;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background 0.25s, color 0.2s;
+    margin-top: 0.5rem;
+  }
+  .form-btn:hover { background: var(--gold); }
+
+  .contact-info h3 {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+    color: var(--ink);
+  }
+  .contact-info p {
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+  .contact-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    font-size: 0.9rem;
+    color: var(--ink-mid);
+  }
+  .contact-detail-icon {
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .map-placeholder {
+    margin-top: 2rem;
+    height: 200px;
+    background: var(--cream-dark);
+    border: 1px solid rgba(184,154,106,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-soft);
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 4rem 0 2rem;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(184,154,106,0.15);
+    margin-bottom: 2rem;
+  }
+
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--cream);
+    letter-spacing: 0.03em;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .footer-logo span { color: var(--gold); }
+
+  .footer-tagline {
+    font-size: 0.88rem;
+    color: rgba(237,229,216,0.5);
+    line-height: 1.75;
+    max-width: 260px;
+  }
+
+  .footer-col-title {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1.2rem;
+    font-weight: 400;
+  }
+
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 0.6rem; }
+  .footer-links a {
+    font-size: 0.88rem;
+    color: rgba(237,229,216,0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--gold-light); }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-copy {
+    font-size: 0.78rem;
+    color: rgba(237,229,216,0.3);
+  }
+
+  .footer-socials { display: flex; gap: 1rem; }
+  .social-link {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(184,154,106,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: rgba(237,229,216,0.5);
+    font-size: 0.75rem;
+    transition: all 0.2s;
+  }
+  .social-link:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ─── PRODUCT ILLUSTRATIONS ─── */
+  .art-vase { background: #e8e0d4; }
+  .art-bowl { background: #ddd5c5; }
+  .art-plate { background: #e5ddd0; }
+  .art-mug { background: #d8d0c2; }
+  .art-sculpture { background: #e0d8ca; }
+
+
+  /* ─── REVIEWS ─── */
+  .reviews-section { background: var(--cream-dark); }
+
+  .reviews-summary {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    margin-bottom: 3.5rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(184,154,106,0.2);
+  }
+
+  .reviews-score {
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .reviews-score-num {
+    font-family: var(--serif);
+    font-size: 5rem;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1;
+    display: block;
+  }
+  .reviews-score-stars {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    margin: 0.4rem 0 0.3rem;
+  }
+  .star-icon { color: var(--gold); font-size: 1.1rem; }
+  .star-icon.empty { color: rgba(184,154,106,0.3); }
+  .reviews-count { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
+
+  .reviews-bars { flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+  .reviews-bar-row { display: flex; align-items: center; gap: 0.8rem; font-size: 0.8rem; color: var(--ink-soft); }
+  .reviews-bar-track { flex: 1; height: 4px; background: rgba(184,154,106,0.2); border-radius: 2px; overflow: hidden; }
+  .reviews-bar-fill { height: 100%; background: var(--gold); border-radius: 2px; transition: width 0.6s ease; }
+  .reviews-bar-label { min-width: 14px; text-align: right; }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .review-card {
+    background: var(--cream);
+    padding: 1.8rem;
+    border: 1px solid rgba(184,154,106,0.18);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+  }
+  .review-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 4px 24px rgba(184,154,106,0.1);
+  }
+
+  .review-stars { display: flex; gap: 3px; margin-bottom: 0.9rem; }
+
+  .review-text {
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    font-style: italic;
+  }
+
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: auto;
+  }
+  .review-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+  .review-name { font-size: 0.85rem; font-weight: 400; color: var(--ink); }
+  .review-date { font-size: 0.72rem; color: var(--ink-soft); letter-spacing: 0.05em; margin-top: 0.15rem; }
+
+  /* Write a review form */
+  .review-form-wrap {
+    background: var(--cream);
+    border: 1px solid rgba(184,154,106,0.2);
+    padding: 2.5rem;
+  }
+  .review-form-title {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  .star-picker { display: flex; gap: 6px; margin-bottom: 1.5rem; }
+  .star-pick {
+    font-size: 1.6rem;
+    cursor: pointer;
+    color: rgba(184,154,106,0.3);
+    transition: color 0.15s, transform 0.15s;
+    user-select: none;
+    line-height: 1;
+  }
+  .star-pick.active, .star-pick:hover { color: var(--gold); transform: scale(1.15); }
+  .review-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+  .review-form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .review-form-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 400;
+  }
+  .review-form-input, .review-form-textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(184,154,106,0.4);
+    padding: 0.7rem 0;
+    font-size: 0.95rem;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .review-form-input:focus, .review-form-textarea:focus { border-color: var(--gold); }
+  .review-form-input::placeholder, .review-form-textarea::placeholder { color: rgba(122,111,98,0.4); }
+  .review-form-textarea { resize: none; height: 90px; margin-bottom: 1.2rem; }
+  .review-form-btn {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 1rem 2.8rem;
+    border: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-family: var(--sans);
+    font-weight: 400;
+    cursor: pointer;
+    transition: background 0.25s;
+    margin-top: 0.5rem;
+  }
+  .review-form-btn:hover { background: var(--gold); }
+  .review-success {
+    display: none;
+    color: var(--gold);
+    font-size: 0.88rem;
+    margin-top: 0.8rem;
+  }
+
+  @media (max-width: 900px) {
+    .reviews-grid { grid-template-columns: 1fr; }
+    .reviews-summary { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+    .review-form-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ─── RESPONSIVE HINT ─── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 2rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { height: 400px; }
+    .hero-left { padding: 4rem 2rem 3rem; }
+    .products-grid { grid-template-columns: 1fr 1fr; }
+    .range-grid { grid-template-columns: 1fr 1fr; }
+    .about-grid, .contact-grid, .faq-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .container { padding: 0 2rem; }
+    section { padding: 4rem 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#" style="display:flex; align-items:center; gap:10px;">
+  <img src="Pictures/Oriental_Logo.png" alt="Oriental Artifacts Logo" style="height:50px; width:100px; object-fit:cover;">
+</a>
+  <ul class="nav-links">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#range">Our Range</a></li>
+    <li><a href="#faq">FAQs</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="#products">Discover Products</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <img src="Pictures/Oriental_2.png" alt="Oriental Artifacts Logo" style="width:160px; margin-bottom:1.5rem; display:block;mix-blend-mode: multiply; margin-left: 55px;">
+<p class="hero-eyebrow">Chiang Mai, Thailand · Est. 2006</p>
+    <h1 class="hero-title">Oriental<br><em>Artifacts</em></h1>
+    <p class="hero-desc">Experience a curated collection of handcrafted artifacts, where tradition meets artistry and every piece embodies heritage, elegance, and craftsmanship.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#products">Discover Products</a>
+      <a class="btn-ghost" href="#about">Our Story →</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="Pictures/shawlss.jpg" alt="Pashmina shawl with fur trim" class="hero-img-main">
+    <div class="hero-img-overlay"></div>
+    <div class="hero-badge">
+      <span class="hero-badge-num">20+</span>
+      <span class="hero-badge-txt">Years of<br>Craftsmanship</span>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE STRIP -->
+<div class="strip">
+  <div class="strip-inner">
+    <span class="strip-item">Handcrafted Carpets</span>
+    <span class="strip-sep">✦</span>
+    <span class="strip-item">Kashmiri Textiles</span>
+    <span class="strip-sep">✦</span>
+    <span class="strip-item">Artisan Jewelry</span>
+    <span class="strip-sep">✦</span>
+    <span class="strip-item">Papier-Mâché Art</span>
+    <span class="strip-sep">✦</span>
+    <span class="strip-item">Persian Rugs</span>
+    <span class="strip-sep">✦</span>
+    <span class="strip-item">Silk Scarves</span>
+    <span class="strip-sep">✦</span>
+    <span class="strip-item">Cultural Artifacts</span>
+    <span class="strip-sep">✦</span>
+    <span class="strip-item">Pashmina Shawls</span>
+    <span class="strip-sep">✦</span>
+    <!-- duplicate for infinite scroll -->
+    <span class="strip-item">Handcrafted Carpets</span>
+    <span class="strip-sep">✦</span>
+    <span class="strip-item">Kashmiri Textiles</span>
+    <span class="strip-sep">✦</span>
+    <span class="strip-item">Artisan Jewelry</span>
+    <span class="strip-sep">✦</span>
+    <span class="strip-item">Papier-Mâché Art</span>
+    <span class="strip-sep">✦</span>
+    <span class="strip-item">Persian Rugs</span>
+    <span class="strip-sep">✦</span>
+    <span class="strip-item">Silk Scarves</span>
+    <span class="strip-sep">✦</span>
+    <span class="strip-item">Cultural Artifacts</span>
+    <span class="strip-sep">✦</span>
+    <span class="strip-item">Pashmina Shawls</span>
+    <span class="strip-sep">✦</span>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="container">
+    <div class="products-header">
+      <div>
+        <p class="section-eyebrow">Our Collection</p>
+        <h2 class="section-title">Featured Products</h2>
+        <div class="section-line"></div>
+      </div>
+      <a class="btn-ghost" href="products.html">View All Products →</a>
+    </div>
+
+    <div class="products-grid" id="productGrid"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background: var(--cream-dark);">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-images">
+        <!-- Artisan illustration 1 -->
+        <img class="about-img-main" src="Pictures/making_1.jpg" alt="Artisan craftsmanship">
+
+        <!-- Artisan illustration 2 -->
+        <img class="about-img-secondary" src="Pictures/Making_2.jpg" alt="Artisan weaving">
+
+        <div class="about-years">
+          <span class="about-years-num">20+</span>
+          <span class="about-years-txt">Years<br>Experience</span>
+        </div>
+      </div>
+
+      <div class="about-text">
+        <p class="section-eyebrow">Who We Are</p>
+        <h2 class="section-title">A Legacy of<br><em style="font-style:italic; color:var(--gold-dark);">Fine Craft</em></h2>
+        <div class="section-line"></div>
+        <p>Oriental Artifacts is a Chiang Mai–based handicraft business with over 30 years of experience serving international customers. Specializing in authentic handmade carpets, textiles, jewelry, and cultural artifacts.</p>
+        <p>The store showcases pieces crafted by skilled artisans across Asia and the Middle East. Each item reflects tradition, heritage, and timeless craftsmanship, making Oriental Artifacts a trusted destination for those seeking meaningful and high-quality handcrafted goods.</p>
+        <a class="btn-primary" href="#products" style="margin-top: 1rem; display:inline-block;">Explore Collection</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR RANGE -->
+<section class="range-section" id="range">
+  <div class="container">
+    <div class="range-header">
+      <div>
+        <p class="section-eyebrow">What We Offer</p>
+        <h2 class="section-title">Our Range</h2>
+        <div class="section-line"></div>
+      </div>
+      <a class="btn-ghost" href="#products" style="color:rgba(237,229,216,0.55); border-color:rgba(184,154,106,0.4);">View All →</a>
+    </div>
+    <div class="range-grid">
+      <div class="range-card">
+        <svg class="range-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="4" y="10" width="32" height="20" rx="1"/>
+          <path d="M4,15 L36,15 M4,20 L36,20 M4,25 L36,25"/>
+          <path d="M10,10 L10,30 M20,10 L20,30 M30,10 L30,30"/>
+        </svg>
+        <h3 class="range-name">Carpets & Rugs</h3>
+        <p class="range-desc">Handwoven Persian and Kashmiri carpets crafted with intricate designs, rich colors, and generations of traditional weaving expertise.</p>
+      </div>
+      <div class="range-card">
+        <svg class="range-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="20" cy="20" r="12"/>
+          <circle cx="20" cy="20" r="5"/>
+          <path d="M20,8 L20,4 M20,36 L20,32 M32,20 L36,20 M8,20 L4,20"/>
+          <path d="M28,12 L31,9 M12,28 L9,31 M28,28 L31,31 M12,12 L9,9"/>
+        </svg>
+        <h3 class="range-name">Jewelry</h3>
+        <p class="range-desc">Artisan-crafted jewelry featuring traditional designs, natural materials, and timeless elegance inspired by diverse cultures.</p>
+      </div>
+      <div class="range-card">
+        <svg class="range-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M8,8 Q20,4 32,8 L30,32 Q20,36 10,32Z"/>
+          <path d="M8,8 Q20,12 32,8"/>
+          <path d="M10,16 Q20,20 30,16"/>
+          <path d="M10,24 Q20,28 30,24"/>
+        </svg>
+        <h3 class="range-name">Scarves & Textiles</h3>
+        <p class="range-desc">Elegant handmade scarves and fine fabrics, including silk and pashmina, known for their softness, detail, and cultural heritage.</p>
+      </div>
+      <div class="range-card">
+        <svg class="range-icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M14,6 C14,6 10,12 10,20 C10,28 14,34 20,36 C26,34 30,28 30,20 C30,12 26,6 26,6"/>
+          <path d="M14,6 Q20,2 26,6"/>
+          <path d="M12,16 Q20,14 28,16"/>
+          <path d="M11,24 Q20,22 29,24"/>
+          <circle cx="20" cy="26" r="3" fill="currentColor" opacity="0.5"/>
+        </svg>
+        <h3 class="range-name">Papier-Mâché Art</h3>
+        <p class="range-desc">Delicately handcrafted and hand-painted decorative pieces from Kashmir, showcasing intricate patterns and refined artistry.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:3.5rem;">
+      <p class="section-eyebrow">Got Questions?</p>
+      <h2 class="section-title">Frequently Asked</h2>
+      <div class="section-line" style="margin: 0 auto 0;"></div>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h3 class="faq-q">Common Queries</h3>
+        <p class="faq-a">Find answers to frequently asked questions about our collection, ordering process, and care instructions for your handcrafted pieces.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q">Shipping & Delivery</h3>
+        <p class="faq-a">Our shipping is reliable and secure, ensuring your product reaches you in pristine condition. We deliver worldwide with care and efficiency.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q">Custom Orders</h3>
+        <p class="faq-a">For custom orders, please contact us directly to discuss your preferences and requirements. We'll work closely with you to bring your vision to life.</p>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q">Care Instructions</h3>
+        <p class="faq-a">Proper care ensures the longevity of the product. Follow our maintenance tips to keep your pieces looking exquisite for years to come.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="reviews-section">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:3rem;">
+      <p class="section-eyebrow">What Our Customers Say</p>
+      <h2 class="section-title">Reviews</h2>
+      <div class="section-line" style="margin: 0 auto 0;"></div>
+    </div>
+
+    <!-- Summary bar -->
+    <div class="reviews-summary">
+      <div class="reviews-score">
+        <span class="reviews-score-num" id="avgScore">5.0</span>
+        <div class="reviews-score-stars" id="avgStars"></div>
+        <span class="reviews-count" id="totalCount">0 reviews</span>
+      </div>
+      <div class="reviews-bars" id="reviewsBars"></div>
+    </div>
+
+    <!-- Review cards -->
+    <div class="reviews-grid" id="reviewsGrid"></div>
+
+    <!-- Write a review -->
+    <div class="review-form-wrap">
+      <h3 class="review-form-title">Share Your Experience</h3>
+      <div class="star-picker" id="starPicker">
+        <span class="star-pick" data-val="1">&#9733;</span>
+        <span class="star-pick" data-val="2">&#9733;</span>
+        <span class="star-pick" data-val="3">&#9733;</span>
+        <span class="star-pick" data-val="4">&#9733;</span>
+        <span class="star-pick" data-val="5">&#9733;</span>
+      </div>
+      <div class="review-form-grid">
+        <div class="review-form-group">
+          <label class="review-form-label">Your Name *</label>
+          <input class="review-form-input" id="revName" type="text" placeholder="e.g. Sophie M." required>
+        </div>
+        <div class="review-form-group">
+          <label class="review-form-label">Where are you from?</label>
+          <input class="review-form-input" id="revLocation" type="text" placeholder="e.g. Paris, France">
+        </div>
+      </div>
+      <textarea class="review-form-textarea" id="revText" placeholder="Tell others about your experience with Oriental Artifacts…"></textarea>
+      <br>
+      <button class="review-form-btn" onclick="submitReview()">Post Review</button>
+      <p class="review-success" id="revSuccess">Thank you! Your review has been posted.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background: var(--cream-dark);">
+  <div class="container">
+    <div style="margin-bottom:3.5rem;">
+      <p class="section-eyebrow">Get In Touch</p>
+      <h2 class="section-title">Contact Us</h2>
+      <div class="section-line"></div>
+      <p style="color:var(--ink-soft); max-width:500px; font-size:0.95rem;">Have a question or want to learn more about our products? Reach out to us and we'll get back to you promptly.</p>
+    </div>
+    <div class="contact-grid">
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First Name *</label>
+            <input class="form-input" type="text" placeholder="Your first name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name *</label>
+            <input class="form-input" type="text" placeholder="Your last name" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email *</label>
+          <input class="form-input" type="email" placeholder="your@email.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone</label>
+          <input class="form-input" type="tel" placeholder="+1 000 000 0000">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-textarea" placeholder="Tell us about your inquiry…"></textarea>
+        </div>
+        <button class="form-btn" type="submit">Send Message</button>
+        <p id="formSuccess" style="display:none; color:var(--gold); font-size:0.88rem; margin-top:0.5rem;">Thank you! We'll be in touch soon.</p>
+      </form>
+
+      <div class="contact-info">
+        <h3>Visit Our Showroom</h3>
+        <p>Come experience our collection in person at our main showroom in Chiang Mai, Thailand.</p>
+        <div class="contact-detail">
+          <svg class="contact-detail-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <span>120/35 Moo 3 San Klang, San Kamphaeng District, Chiang Mai, Thailand 50130</span>
+        </div>
+        <div class="contact-detail">
+          <svg class="contact-detail-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l1.46-1.46a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          <span>+66 53-339-199 / +66 897591083 / 0897591083</span>
+        </div>
+        <div class="contact-detail">
+          <svg class="contact-detail-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span>orientalartifactsth@gmail.com</span>
+        </div>
+        <iframe
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d500!2d99.0597971!3d18.7746941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30da2fdf05266b83:0x2535a0e1209818e3!2sOriental+Artifacts+Co.Ltd.!5e0!3m2!1sen!2sth!4v1"
+  width="100%"
+  height="200"
+  style="border:0; display:block;"
+  allowfullscreen=""
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <span class="footer-logo"><span>Oriental</span> Artifacts</span>
+        <p class="footer-tagline">A curated collection of handcrafted artifacts where tradition meets artistry. Serving international customers for over 30 years.</p>
+      </div>
+      <div>
+        <p class="footer-col-title">Navigate</p>
+        <ul class="footer-links">
+          <li><a href="#products">Products</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#range">Our Range</a></li>
+          <li><a href="#faq">FAQs</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Policies</p>
+        <ul class="footer-links">
+          <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Follow Us</p>
+        <ul class="footer-links">
+          <li><a href="https://www.instagram.com/cmorientalartifacts/">Instagram</a></li>
+          <li><a href="https://www.facebook.com/chiangmaisouvenir">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Oriental Artifacts. All rights reserved.</p>
+      <div class="footer-socials">
+        <a class="social-link" href="https://www.instagram.com/cmorientalartifacts/" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a class="social-link" href="https://www.facebook.com/chiangmaisouvenir" aria-label="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const products = [
+  { name: "Handwoven Silk Kashan Rug", type: "carpet", color: "#8a2b2b", accent: "#d4af37" },
+  { name: "Teak Wood Elephant Panel", type: "wood", color: "#5c4033", accent: "#b89a6a" },
+  { name: "Engraved Brass Urn", type: "brass", color: "#d4af37", accent: "#5c4033" },
+  { name: "Pure Pashmina Shawl", type: "shawl", color: "#e3dac9", accent: "#8a7050" },
+  { name: "Silver Lapis Lazuli Necklace", type: "jewelry", color: "#000080", accent: "#d3d3d3" },
+  { name: "Papier-Mâché Floral Vase", type: "other", color: "#faf5ec", accent: "#b89060" },
+];
+
+function drawProduct(type, color, accent) {
+  const svgs = {
+    carpet: `<svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%"><rect width="200" height="250" fill="${color}"/><g transform="translate(100,125)"><rect x="-60" y="-90" width="120" height="180" fill="#a52a2a" stroke="${accent}" stroke-width="2" rx="2"/><rect x="-50" y="-80" width="100" height="160" fill="none" stroke="${accent}" stroke-width="1.5" stroke-dasharray="4,4"/><line x1="-60" y1="-95" x2="-60" y2="-90" stroke="#f0e8d8" stroke-width="2"/><line x1="-50" y1="-95" x2="-50" y2="-90" stroke="#f0e8d8" stroke-width="2"/><line x1="-40" y1="-95" x2="-40" y2="-90" stroke="#f0e8d8" stroke-width="2"/><line x1="-30" y1="-95" x2="-30" y2="-90" stroke="#f0e8d8" stroke-width="2"/><line x1="-20" y1="-95" x2="-20" y2="-90" stroke="#f0e8d8" stroke-width="2"/><line x1="-10" y1="-95" x2="-10" y2="-90" stroke="#f0e8d8" stroke-width="2"/><line x1="0" y1="-95" x2="0" y2="-90" stroke="#f0e8d8" stroke-width="2"/><line x1="10" y1="-95" x2="10" y2="-90" stroke="#f0e8d8" stroke-width="2"/><line x1="20" y1="-95" x2="20" y2="-90" stroke="#f0e8d8" stroke-width="2"/><line x1="30" y1="-95" x2="30" y2="-90" stroke="#f0e8d8" stroke-width="2"/><line x1="40" y1="-95" x2="40" y2="-90" stroke="#f0e8d8" stroke-width="2"/><line x1="50" y1="-95" x2="50" y2="-90" stroke="#f0e8d8" stroke-width="2"/><line x1="60" y1="-95" x2="60" y2="-90" stroke="#f0e8d8" stroke-width="2"/><line x1="-60" y1="90" x2="-60" y2="95" stroke="#f0e8d8" stroke-width="2"/><line x1="-50" y1="90" x2="-50" y2="95" stroke="#f0e8d8" stroke-width="2"/><line x1="-40" y1="90" x2="-40" y2="95" stroke="#f0e8d8" stroke-width="2"/><line x1="-30" y1="90" x2="-30" y2="95" stroke="#f0e8d8" stroke-width="2"/><line x1="-20" y1="90" x2="-20" y2="95" stroke="#f0e8d8" stroke-width="2"/><line x1="-10" y1="90" x2="-10" y2="95" stroke="#f0e8d8" stroke-width="2"/><line x1="0" y1="90" x2="0" y2="95" stroke="#f0e8d8" stroke-width="2"/><line x1="10" y1="90" x2="10" y2="95" stroke="#f0e8d8" stroke-width="2"/><line x1="20" y1="90" x2="20" y2="95" stroke="#f0e8d8" stroke-width="2"/><line x1="30" y1="90" x2="30" y2="95" stroke="#f0e8d8" stroke-width="2"/><line x1="40" y1="90" x2="40" y2="95" stroke="#f0e8d8" stroke-width="2"/><line x1="50" y1="90" x2="50" y2="95" stroke="#f0e8d8" stroke-width="2"/><line x1="60" y1="90" x2="60" y2="95" stroke="#f0e8d8" stroke-width="2"/><polygon points="0,-25 20,0 0,25 -20,0" fill="none" stroke="${accent}" stroke-width="1.5"/><circle cx="0" cy="0" r="8" fill="${accent}" opacity="0.6"/></g></svg>`,
+    wood: `<svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%"><rect width="200" height="250" fill="${color}"/><g transform="translate(100,125)"><path d="M-45,-75 L45,-75 C55,-30 55,30 45,75 L-45,75 C-55,30 -55,-30 -45,-75Z" fill="#7c5c43" stroke="${accent}" stroke-width="2"/><path d="M-35,-65 L35,-65 C43,-25 43,25 35,65 L-35,65 C-43,25 -43,-25 -35,-65Z" fill="none" stroke="${accent}" stroke-width="1" opacity="0.5"/><circle cx="0" cy="0" r="25" fill="none" stroke="${accent}" stroke-width="1.5"/><path d="M-15,0 C-5,-15 5,-15 15,0 C5,15 -5,15 -15,0Z" fill="none" stroke="${accent}" stroke-width="1.5"/></g></svg>`,
+    wall: `<svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%"><rect width="200" height="250" fill="${color}"/><g transform="translate(100,125)"><line x1="-70" y1="-85" x2="70" y2="-85" stroke="#8a7050" stroke-width="4" stroke-linecap="round"/><path d="M-60,-80 L60,-80 L50,80 L-50,80 Z" fill="#ede5d8" stroke="${accent}" stroke-width="1.5"/><line x1="-40" y1="-40" x2="40" y2="-40" stroke="${accent}" stroke-width="1.5"/><path d="M0,-30 C15,-10 15,10 0,30 C-15,10 -15,-10 0,-30 Z" fill="none" stroke="${accent}" stroke-width="1.5"/><line x1="0" y1="-85" x2="0" y2="-105" stroke="${accent}" stroke-width="1.5" stroke-dasharray="2,2"/></g></svg>`,
+    brass: `<svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%"><rect width="200" height="250" fill="${color}"/><g transform="translate(100,125)"><path d="M0,-80 C30,-78 45,-50 48,-10 C52,30 40,65 25,90 L-25,90 C-40,65 -52,30 -48,-10 C-45,-50 -30,-78 0,-80Z" fill="#e5c158" stroke="${accent}" stroke-width="2"/><ellipse cx="0" cy="-80" rx="15" ry="5" fill="#ffd875" stroke="${accent}" stroke-width="1"/><circle cx="0" cy="5" r="18" fill="none" stroke="${accent}" stroke-width="1" stroke-dasharray="3,3"/><ellipse cx="0" cy="90" rx="30" ry="8" fill="#ffd875" stroke="${accent}" stroke-width="1"/></g></svg>`,
+    shawl: `<svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%"><rect width="200" height="250" fill="${color}"/><g transform="translate(100,125)"><path d="M-60,-50 Q-30,-70 0,-50 Q30,-30 60,-50 L50,60 Q20,80 -10,60 Q-40,40 -50,60 Z" fill="#e1b3b3" stroke="${accent}" stroke-width="1.5"/><path d="M-50,-30 Q-20,-50 10,-30 Q40,-10 70,-30" fill="none" stroke="${accent}" stroke-width="1.5"/><line x1="-50" y1="60" x2="-50" y2="75" stroke="${accent}" stroke-width="1.5"/><line x1="-30" y1="61" x2="-30" y2="76" stroke="${accent}" stroke-width="1.5"/><line x1="-10" y1="60" x2="-10" y2="75" stroke="${accent}" stroke-width="1.5"/><line x1="10" y1="62" x2="10" y2="77" stroke="${accent}" stroke-width="1.5"/><line x1="30" y1="61" x2="30" y2="76" stroke="${accent}" stroke-width="1.5"/><line x1="50" y1="60" x2="50" y2="75" stroke="${accent}" stroke-width="1.5"/></g></svg>`,
+    jewelry: `<svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%"><rect width="200" height="250" fill="${color}"/><g transform="translate(100,115)"><circle cx="0" cy="0" r="50" fill="none" stroke="${accent}" stroke-width="2" stroke-dasharray="6,4"/><circle cx="0" cy="45" r="16" fill="#4682b4" stroke="${accent}" stroke-width="1.5"/><path d="M-5,-48 L0,-65 L5,-48 Z" fill="${accent}"/></g></svg>`,
+    other: `<svg viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%"><rect width="200" height="250" fill="${color}"/><g transform="translate(100,125)"><path d="M-40,-50 Q0,-90 40,-50 Q50,0 25,60 L-25,60 Q-50,0 -40,-50 Z" fill="#fcf6eb" stroke="${accent}" stroke-width="1.5"/><path d="M-20,-20 Q0,-40 20,-20 Q30,10 0,30 Q-30,10 -20,-20 Z" fill="none" stroke="${accent}" stroke-width="1"/><circle cx="0" cy="-5" r="5" fill="${accent}" opacity="0.6"/></g></svg>`,
+  };
+  return svgs[type] || svgs.other;
+}
+
+const grid = document.getElementById('productGrid');
+products.forEach(p => {
+  const card = document.createElement('div');
+  card.className = 'product-card';
+  card.innerHTML = `
+    <div class="product-img-wrap">
+      <div class="product-art">${drawProduct(p.type, p.color, p.accent)}</div>
+      <div class="product-overlay">
+      </div>
+    </div>
+    <p class="product-name">${p.name}</p>
+  `;
+  grid.appendChild(card);
+});
+
+function handleSubmit(e) {
+  e.preventDefault();
+  document.getElementById('formSuccess').style.display = 'block';
+  e.target.reset();
+}
+
+
+/* ── REVIEWS ── */
+const SEED_REVIEWS = [
+  { name: 'Robbie B.W.', location: 'Vancouver, Canada', rating: 5, date: 'June 2024',
+    text: 'I had a great experience with Mir. I bought a teak hand‑carved elephant table and five stools, and the two‑month delivery was expected due to fumigation and customs. Packaging was excellent, everything arrived in perfect condition, and Mir’s communication was outstanding. I’d definitely recommend them.' },
+  { name: 'Majid M.', location: 'Dubai, UAE', rating: 5, date: 'April 2025',
+    text: 'Searched for a gift shop in chiang Mai google maps suggested to this location. Got local gift items at reasonable price. Giving 5 star bcz of Nice staff, Good product and Quality. From Dubai UAE' },
+  { name: 'Saman S.', location: 'Delhi, India', rating: 5, date: 'February 2025',
+    text: 'Best place to visit for handmade carpets, superb in quality, unique in design and reasonably priced. supportive and friendly staff!' },
+];
+
+function getReviews() {
+  try {
+    const stored = localStorage.getItem('oa_reviews');
+    return stored ? JSON.parse(stored) : SEED_REVIEWS;
+  } catch { return SEED_REVIEWS; }
+}
+
+function saveReviews(reviews) {
+  try { localStorage.setItem('oa_reviews', JSON.stringify(reviews)); } catch {}
+}
+
+function renderStars(rating, size) {
+  return [1,2,3,4,5].map(i =>
+    `<span class="star-icon${i <= rating ? '' : ' empty'}" style="font-size:${size || '0.9rem'}">&#9733;</span>`
+  ).join('');
+}
+
+function renderReviews() {
+  const reviews = getReviews();
+  const grid = document.getElementById('reviewsGrid');
+  const avgEl = document.getElementById('avgScore');
+  const avgStarsEl = document.getElementById('avgStars');
+  const countEl = document.getElementById('totalCount');
+  const barsEl = document.getElementById('reviewsBars');
+
+  // Summary
+  const avg = reviews.reduce((s, r) => s + r.rating, 0) / (reviews.length || 1);
+  avgEl.textContent = avg.toFixed(1);
+  avgStarsEl.innerHTML = renderStars(Math.round(avg), '1.1rem');
+  countEl.textContent = `${reviews.length} review${reviews.length !== 1 ? 's' : ''}`;
+
+  // Rating bars
+  barsEl.innerHTML = [5,4,3,2,1].map(star => {
+    const count = reviews.filter(r => r.rating === star).length;
+    const pct = reviews.length ? Math.round((count / reviews.length) * 100) : 0;
+    return `<div class="reviews-bar-row">
+      <span class="reviews-bar-label">${star}</span>
+      <span class="star-icon" style="font-size:0.75rem;">&#9733;</span>
+      <div class="reviews-bar-track"><div class="reviews-bar-fill" style="width:${pct}%"></div></div>
+      <span style="font-size:0.78rem; min-width:28px; color:var(--ink-soft);">${pct}%</span>
+    </div>`;
+  }).join('');
+
+  // Cards (show latest 6)
+  grid.innerHTML = reviews.slice().reverse().slice(0, 6).map(r => `
+    <div class="review-card">
+      <div class="review-stars">${renderStars(r.rating, '0.95rem')}</div>
+      <p class="review-text">“${r.text}”</p>
+      <div class="review-author">
+        <div class="review-avatar">${r.name.charAt(0)}</div>
+        <div>
+          <div class="review-name">${r.name}${r.location ? ' · ' + r.location : ''}</div>
+          <div class="review-date">${r.date}</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Star picker interaction
+let selectedRating = 0;
+document.querySelectorAll('.star-pick').forEach(star => {
+  star.addEventListener('mouseover', () => {
+    const val = +star.dataset.val;
+    document.querySelectorAll('.star-pick').forEach(s => s.classList.toggle('active', +s.dataset.val <= val));
+  });
+  star.addEventListener('mouseout', () => {
+    document.querySelectorAll('.star-pick').forEach(s => s.classList.toggle('active', +s.dataset.val <= selectedRating));
+  });
+  star.addEventListener('click', () => {
+    selectedRating = +star.dataset.val;
+    document.querySelectorAll('.star-pick').forEach(s => s.classList.toggle('active', +s.dataset.val <= selectedRating));
+  });
+});
+
+function submitReview() {
+  const name = document.getElementById('revName').value.trim();
+  const text = document.getElementById('revText').value.trim();
+  if (!name) { alert('Please enter your name.'); return; }
+  if (!selectedRating) { alert('Please select a star rating.'); return; }
+  if (!text) { alert('Please write a short review.'); return; }
+
+  const location = document.getElementById('revLocation').value.trim();
+  const now = new Date();
+  const date = now.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+
+  const reviews = getReviews();
+  reviews.push({ name, location, rating: selectedRating, date, text });
+  saveReviews(reviews);
+
+  // Reset form
+  document.getElementById('revName').value = '';
+  document.getElementById('revLocation').value = '';
+  document.getElementById('revText').value = '';
+  selectedRating = 0;
+  document.querySelectorAll('.star-pick').forEach(s => s.classList.remove('active'));
+  document.getElementById('revSuccess').style.display = 'block';
+  setTimeout(() => document.getElementById('revSuccess').style.display = 'none', 4000);
+
+  renderReviews();
+}
+
+renderReviews();
+
+// Smooth nav scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    if (id === '#') return;
+    const el = document.querySelector(id);
+    if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+
+// Nav shadow on scroll
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.boxShadow = window.scrollY > 30 ? '0 2px 20px rgba(26,22,18,0.08)' : 'none';
+});
+</script>
+</body>
+</html>
