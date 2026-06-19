@@ -886,6 +886,90 @@
     .review-form-grid { grid-template-columns: 1fr; }
   }
 
+  /* ─── CUSTOMER PHOTO STRIP ─── */
+  .photo-strip {
+    background: var(--cream-dark);
+    padding: 4rem 0;
+    overflow: hidden;
+  }
+
+  .photo-strip-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding: 0 4rem;
+  }
+
+  .photo-strip-track {
+    display: flex;
+    gap: 1.5rem;
+    white-space: nowrap;
+    width: max-content;
+    animation: scroll-photos 35s linear infinite;
+  }
+
+  .photo-strip-track:hover { animation-play-state: paused; }
+
+  @keyframes scroll-photos {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .photo-strip-outer {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .customer-photo-card {
+    display: inline-flex;
+    flex-direction: column;
+    width: 260px;
+    flex-shrink: 0;
+    white-space: normal;
+    vertical-align: top;
+  }
+
+  .customer-photo-img {
+    width: 260px;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .customer-photo-img-placeholder {
+    width: 260px;
+    height: 300px;
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .customer-photo-caption {
+    padding: 0.9rem 0 0;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .customer-photo-flag {
+    font-size: 1.1rem;
+    line-height: 1;
+  }
+
+  .customer-photo-name {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+    font-weight: 400;
+  }
+
+  .customer-photo-loc {
+    font-size: 0.72rem;
+    color: var(--gold-dark);
+    letter-spacing: 0.06em;
+  }
+
   /* ─── RESPONSIVE HINT ─── */
   @media (max-width: 900px) {
     nav { padding: 1rem 2rem; }
@@ -1161,6 +1245,60 @@
   </div>
 </section>
 
+<!-- CUSTOMER PHOTO STRIP -->
+<section class="photo-strip">
+  <div class="photo-strip-header">
+    <p class="section-eyebrow">Our Community</p>
+    <h2 class="section-title">Happy Customers</h2>
+    <div class="section-line" style="margin: 0 auto;"></div>
+  </div>
+  <div class="photo-strip-outer">
+    <div class="photo-strip-track" id="photoStrip">
+
+      <!-- Card 1 -->
+      <div class="customer-photo-card">
+        <img class="customer-photo-img" src="Pictures/Customers/customer_1.jpeg" alt="Happy customer" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="customer-photo-img-placeholder" style="display:none;">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="18" r="9" stroke="#b89a6a" stroke-width="1.5"/><path d="M6 42c0-9.941 8.059-18 18-18s18 8.059 18 18" stroke="#b89a6a" stroke-width="1.5"/></svg>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="customer-photo-card">
+        <img class="customer-photo-img" src="Pictures/Customers/customer_2.jpeg" alt="Happy customer" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="customer-photo-img-placeholder" style="display:none;">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="18" r="9" stroke="#b89a6a" stroke-width="1.5"/><path d="M6 42c0-9.941 8.059-18 18-18s18 8.059 18 18" stroke="#b89a6a" stroke-width="1.5"/></svg>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="customer-photo-card">
+        <img class="customer-photo-img" src="Pictures/Customers/customer_3.jpeg" alt="Happy customer" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="customer-photo-img-placeholder" style="display:none;">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="18" r="9" stroke="#b89a6a" stroke-width="1.5"/><path d="M6 42c0-9.941 8.059-18 18-18s18 8.059 18 18" stroke="#b89a6a" stroke-width="1.5"/></svg>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="customer-photo-card">
+        <img class="customer-photo-img" src="Pictures/Customers/customer_4.jpeg" alt="Happy customer" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="customer-photo-img-placeholder" style="display:none;">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="18" r="9" stroke="#b89a6a" stroke-width="1.5"/><path d="M6 42c0-9.941 8.059-18 18-18s18 8.059 18 18" stroke="#b89a6a" stroke-width="1.5"/></svg>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="customer-photo-card">
+        <img class="customer-photo-img" src="Pictures/Customers/customer_5.jpeg" alt="Happy customer" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="customer-photo-img-placeholder" style="display:none;">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="18" r="9" stroke="#b89a6a" stroke-width="1.5"/><path d="M6 42c0-9.941 8.059-18 18-18s18 8.059 18 18" stroke="#b89a6a" stroke-width="1.5"/></svg>
+        </div>
+      </div>
+
+    </div><!-- end photo-strip-track (JS duplicates it for infinite loop) -->
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact" style="background: var(--cream-dark);">
   <div class="container">
@@ -1175,24 +1313,24 @@
         <div class="form-row">
           <div class="form-group">
             <label class="form-label">First Name *</label>
-            <input class="form-input" type="text" placeholder="Your first name" required>
+            <input class="form-input" name="first_name" type="text" placeholder="Your first name" required>
           </div>
           <div class="form-group">
             <label class="form-label">Last Name *</label>
-            <input class="form-input" type="text" placeholder="Your last name" required>
+            <input class="form-input" name="last_name" type="text" placeholder="Your last name" required>
           </div>
         </div>
         <div class="form-group">
           <label class="form-label">Email *</label>
-          <input class="form-input" type="email" placeholder="your@email.com" required>
+          <input class="form-input" name="email" type="email" placeholder="your@email.com" required>
         </div>
         <div class="form-group">
           <label class="form-label">Phone</label>
-          <input class="form-input" type="tel" placeholder="+1 000 000 0000">
+          <input class="form-input" name="phone" type="tel" placeholder="+1 000 000 0000">
         </div>
         <div class="form-group">
           <label class="form-label">Message</label>
-          <textarea class="form-textarea" placeholder="Tell us about your inquiry…"></textarea>
+          <textarea class="form-textarea" name="message" placeholder="Tell us about your inquiry…"></textarea>
         </div>
         <button class="form-btn" type="submit">Send Message</button>
         <p id="formSuccess" style="display:none; color:var(--gold); font-size:0.88rem; margin-top:0.5rem;">Thank you! We'll be in touch soon.</p>
@@ -1254,18 +1392,18 @@
       <div>
         <p class="footer-col-title">Follow Us</p>
         <ul class="footer-links">
-          <li><a href="https://www.instagram.com/cmorientalartifacts/">Instagram</a></li>
-          <li><a href="https://www.facebook.com/chiangmaisouvenir">Facebook</a></li>
+          <li><a href="https://www.instagram.com/cmorientalartifacts/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://www.facebook.com/chiangmaisouvenir" target="_blank" rel="noopener noreferrer">Facebook</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <p class="footer-copy">© 2026 Oriental Artifacts. All rights reserved.</p>
       <div class="footer-socials">
-        <a class="social-link" href="https://www.instagram.com/cmorientalartifacts/" aria-label="Instagram">
+        <a class="social-link" href="https://www.instagram.com/cmorientalartifacts/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
         </a>
-        <a class="social-link" href="https://www.facebook.com/chiangmaisouvenir" aria-label="Facebook">
+        <a class="social-link" href="https://www.facebook.com/chiangmaisouvenir" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
         </a>
       </div>
@@ -1313,8 +1451,18 @@ products.forEach(p => {
 
 function handleSubmit(e) {
   e.preventDefault();
-  document.getElementById('formSuccess').style.display = 'block';
-  e.target.reset();
+  const form = e.target;
+  const data = new FormData(form);
+  fetch('https://formspree.io/f/xjgdazzz', {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  }).then(r => {
+    if (r.ok) {
+      document.getElementById('formSuccess').style.display = 'block';
+      form.reset();
+    }
+  });
 }
 
 
@@ -1414,9 +1562,23 @@ function submitReview() {
   const now = new Date();
   const date = now.toLocaleString('en-US', { month: 'long', year: 'numeric' });
 
-  const reviews = getReviews();
-  reviews.push({ name, location, rating: selectedRating, date, text });
-  saveReviews(reviews);
+  // Send to Google Sheets
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbzk4MiVWsGbyriyMERr4x-YFWIAdXnbv6d2d1q6e70ZQ23vdQy7vMcCZfWB5fDOdSDS8g/exec';
+fetch(SHEET_URL, {
+  method: 'POST',
+  mode: 'no-cors',
+  body: JSON.stringify({ name, location, rating: selectedRating, date, text }),
+});
+
+  // Update local average only (don't show the new review publicly)
+  fetch(SHEET_URL)
+    .then(r => r.json())
+    .then(data => {
+      if (data.count > 0) {
+        document.getElementById('avgScore').textContent = data.avg.toFixed(1);
+        document.getElementById('totalCount').textContent = `${data.count + SEED_REVIEWS.length} reviews`;
+      }
+    });
 
   // Reset form
   document.getElementById('revName').value = '';
@@ -1431,6 +1593,41 @@ function submitReview() {
 }
 
 renderReviews();
+
+// Load live average from Google Sheets on page load
+fetch('https://script.google.com/macros/s/AKfycbzk4MiVWsGbyriyMERr4x-YFWIAdXnbv6d2d1q6e70ZQ23vdQy7vMcCZfWB5fDOdSDS8g/exec')
+  .then(r => r.json())
+  .then(data => {
+    if (data.count > 0) {
+      const totalCount = data.count + SEED_REVIEWS.length;
+      const seedSum = SEED_REVIEWS.reduce((s, r) => s + r.rating, 0);
+      const totalAvg = ((data.avg * data.count) + seedSum) / totalCount;
+      document.getElementById('avgScore').textContent = totalAvg.toFixed(1);
+      document.getElementById('totalCount').textContent = `${totalCount} review${totalCount !== 1 ? 's' : ''}`;
+      const sheetRatings = Array(data.count).fill(Math.round(data.avg));
+      const allRatings = [...SEED_REVIEWS.map(r => r.rating), ...sheetRatings];
+      document.getElementById('reviewsBars').innerHTML = [5,4,3,2,1].map(star => {
+        const count = allRatings.filter(r => r === star).length;
+        const pct = Math.round((count / allRatings.length) * 100);
+        return `<div class="reviews-bar-row">
+          <span class="reviews-bar-label">${star}</span>
+          <span class="star-icon" style="font-size:0.75rem;">&#9733;</span>
+          <div class="reviews-bar-track"><div class="reviews-bar-fill" style="width:${pct}%"></div></div>
+          <span style="font-size:0.78rem; min-width:28px; color:var(--ink-soft);">${pct}%</span>
+        </div>`;
+      }).join('');
+    }
+  })
+  .catch(() => {});
+
+// Duplicate photo strip cards for seamless infinite scroll
+(function() {
+  const track = document.getElementById('photoStrip');
+  if (track) {
+    const clone = track.innerHTML;
+    track.innerHTML = clone + clone;
+  }
+})();
 
 // Smooth nav scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
